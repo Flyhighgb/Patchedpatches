@@ -159,7 +159,7 @@ ${body}
     <div><h2>About us</h2><ul><li><a href="/about/">About</a></li><li><a href="/about/#how-we-write-our-guides">How we write our guides</a></li><li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
   </div>
   <p class="footer-note">Always check the care label on your garment and the instructions that came with your patch, iron or glue. Information here is general guidance.</p>
-  <p class="footer-note">© ${new Date().getFullYear()} ${esc(config.name)}. Photos from <a href="https://unsplash.com/?utm_source=patchedpatches&amp;utm_medium=referral">Unsplash</a>.</p>
+  <p class="footer-note">© ${new Date().getFullYear()} ${esc(config.name)}.${guides.some(g => g.image) ? ' Photos from <a href="https://unsplash.com/?utm_source=patchedpatches&amp;utm_medium=referral">Unsplash</a>.' : ''}</p>
 </div></footer>
 ${analytics}
 </body>
