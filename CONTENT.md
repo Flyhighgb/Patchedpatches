@@ -48,14 +48,9 @@ Rules for buying guides:
 
 ## Topic backlog
 Write these next, roughly in order, and remove each from the list once published:
-- How to put a patch on a hat or cap
-- How to fix a patch that's peeling off
-- Where to put patches on a denim jacket (placement ideas)
 - Buying guide: best sewing kits for patches and repairs
 - Embroidered vs woven vs PVC patches: what's the difference?
 - How to make your own iron-on patch (fusible web method)
-- How to put patches on a backpack
-- How to patch a hole in jeans (iron-on and sewn repairs)
 - Buying guide: best needles and thread for sewing on patches
 - How to put a patch on a leather jacket
 - How to attach patches to a nylon or polyester jacket
@@ -65,7 +60,6 @@ Write these next, roughly in order, and remove each from the list once published
 - Velcro patches: how to add a hook-and-loop panel
 - How to design a custom patch (sizes, colours, borders)
 - Chenille patches: how to apply and care for them
-- How to iron on a patch without an iron
 - Buying guide: best heat press mats and Teflon sheets
 - How to arrange lots of patches on a jacket (battle jacket guide)
 - Scout and Guide badges: how to sew them on neatly
