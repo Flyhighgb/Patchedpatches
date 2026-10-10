@@ -1,0 +1,13 @@
+{
+  "name": "patchedpatches",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "og": "node scripts/og.mjs",
+    "art": "node scripts/illustrations.mjs"
+  },
+  "dependencies": {
+    "marked": "15.0.12"
+  }
+}
