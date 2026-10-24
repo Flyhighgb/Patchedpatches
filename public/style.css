@@ -652,3 +652,16 @@ nav[aria-label="Main"] a { font-weight: 800; }
   .layout-tool { grid-template-columns: minmax(0, 1fr); padding-top: 18px; }
   .stage { position: relative; top: 0; padding: 10px; border-radius: 22px; }
 }
+
+/* Homepage band for the layout tool */
+.tool-band { padding: 40px 0 0; }
+.tool-band-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; padding: 30px 40px; border-radius: 30px;
+  background: color-mix(in srgb, #8e5cd9 14%, var(--surface)); box-shadow: 0 6px 0 color-mix(in srgb, #8e5cd9 30%, transparent), var(--shadow); }
+.tool-band-art { display: block; }
+.tool-band-art svg { display: block; width: 100%; height: auto; max-height: 280px; transition: transform .3s cubic-bezier(.3, 1.4, .5, 1); }
+.tool-band-art:hover svg { transform: rotate(-2deg) scale(1.03); }
+.tool-band-art .cursor { animation: nudge 2.4s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translate(250px, 200px); } }
+@media (prefers-reduced-motion: reduce) { .tool-band-art .cursor { animation: none; } }
+@media (max-width: 760px) { .tool-band-grid { grid-template-columns: minmax(0, 1fr); padding: 24px 20px; } }
+@media (max-width: 440px) { .site-header nav .hide-xs { display: none; } }

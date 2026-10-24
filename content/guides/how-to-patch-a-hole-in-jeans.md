@@ -1,7 +1,7 @@
 ---
 title: How to patch a hole in jeans (iron-on and sewn repairs)
 description: How to fix a hole in jeans with an iron-on or sewn patch, when to patch from the inside or the outside, and how to mend knee and crotch holes so they last.
-category: Projects and ideas
+category: Mending and repairs
 date: 2026-10-10
 patch: MEND|IT
 shape: square

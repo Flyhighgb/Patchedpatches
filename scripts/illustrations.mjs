@@ -25,6 +25,10 @@ const props = {
 <path d="M202 80 h34 M202 92 h34 M202 104 h34 M202 116 h34 M202 128 h34" stroke="#e57a96" stroke-width="3"/>
 <path d="M300 50 L262 150" stroke="${P}" stroke-width="5" stroke-linecap="round"/><ellipse cx="296" cy="60" rx="3" ry="7" transform="rotate(21 296 60)" fill="${BG}"/>
 <path d="M296 60 q-30 30 -60 20" stroke="${R}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+  'mending-and-repairs': `<path d="M196 98 q0 -44 44 -44 q44 0 44 44z" fill="${R}"/>
+<path d="M212 70 h56 M206 82 h68 M226 58 v38 M240 55 v41 M254 58 v38" stroke="${W}" stroke-width="3" stroke-dasharray="5 4" stroke-linecap="round"/>
+<rect x="230" y="98" width="20" height="50" rx="8" fill="${P}"/><rect x="220" y="140" width="40" height="12" rx="6" fill="${P}"/>
+<circle cx="284" cy="132" r="18" fill="${Y}"/><path d="M270 124 q14 -6 28 4 M268 134 q16 -6 32 4 M272 144 q12 -4 22 2" stroke="#d9a90f" stroke-width="2.5" fill="none" stroke-linecap="round"/>`,
   default: `<g transform="translate(196 50)"><rect width="88" height="88" rx="18" fill="${P}"/><rect x="9" y="9" width="70" height="70" rx="12" fill="none" stroke="${W}" stroke-width="3" stroke-dasharray="6 5"/>
 <path d="M44 22 a18 18 0 1 0 0.1 0z" fill="${Y}"/></g>`,
 };

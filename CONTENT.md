@@ -3,7 +3,7 @@
 These are the rules every guide follows, whether a person or Claude writes it.
 
 ## Who it's for
-Someone in the UK who just searched "how to iron on a patch", "best glue for patches" or similar. Answer their question in the first paragraph.
+Someone in the UK who just searched "how to iron on a patch", "how to fix a hole in jeans", "how to darn a jumper", "best glue for patches" or similar. The site covers patches **and** everyday clothing repair and mending. Answer their question in the first paragraph.
 
 ## Shape of a how-to guide
 1. A short opening: the quick answer, and what usually goes wrong.
@@ -25,7 +25,8 @@ Someone in the UK who just searched "how to iron on a patch", "best glue for pat
 - No filler intros, no "In conclusion", no keyword stuffing.
 - One topic per guide. Check `content/guides/` first and don't duplicate an existing guide; update it instead.
 - Link to 1–3 related guides on the site with relative links like `/guides/how-to-iron-on-a-patch/`.
-- `category` must be one of: Applying patches, Patch care, Choosing patches, Projects and ideas, Tools and kit.
+- `category` must be one of: Applying patches, Mending and repairs, Patch care, Choosing patches, Projects and ideas, Tools and kit.
+- Where a guide is about placing patches, link to the free [patch layout tool](/patch-layout-tool/).
 
 ## Buying guides (Tools and kit)
 Buying guides help someone choose a product: "best X for patches". They are where most affiliate income comes from. Shape:
@@ -47,7 +48,26 @@ Rules for buying guides:
 - 1 to 3 Amazon links in a how-to guide. In a buying guide, one per type in the table plus one per named product in Popular picks.
 
 ## Topic backlog
-Write these next, roughly in order, and remove each from the list once published:
+Write these next, roughly in order, and remove each from the list once published. Alternate mending guides with patch guides.
+
+Mending and repairs (category: Mending and repairs; buying guides go in Tools and kit):
+- Buying guide: best sewing machines for beginners (UK)
+- How to fix a broken zip (stuck, split and missing teeth)
+- How to take up trousers by hand (hemming without a machine)
+- How to fix a ripped seam
+- How to remove bobbles from a jumper (and stop them coming back)
+- Buying guide: best fabric shavers and de-bobblers
+- How to darn socks
+- How to fix a hole in a T-shirt
+- How to mend a hole in a coat lining
+- How to fix a snag in a jumper
+- Buying guide: best darning and mending kits
+- How to replace a drawstring in a hoodie or joggers
+- How to fix a fallen hem with hemming tape (no sewing)
+- How to repair a tear in a waterproof jacket
+- Basic hand stitches every mender needs
+
+Patches:
 - Buying guide: best sewing kits for patches and repairs
 - Embroidered vs woven vs PVC patches: what's the difference?
 - How to make your own iron-on patch (fusible web method)
