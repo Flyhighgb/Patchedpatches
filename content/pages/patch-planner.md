@@ -6,7 +6,7 @@ Plan where every patch goes before the iron comes out. The Patch Placement Plann
 
 [Get the planner](gumroad:planner)
 
-<div class="planner-pages"><img src="/img/planner/page-1.jpg" alt="Planner cover: patches pegged on a washing line" width="600" height="849" loading="lazy"><img src="/img/planner/page-4.jpg" alt="Denim jacket front template on a dotted grid" width="600" height="849" loading="lazy"><img src="/img/planner/page-8.jpg" alt="Four patch layout ideas for jackets" width="600" height="849" loading="lazy"><img src="/img/planner/page-11.jpg" alt="Cheat sheet: care label iron symbols and the best method for each fabric" width="600" height="849" loading="lazy"></div>
+<div class="planner-pages"><img src="/img/planner/page-1.jpg" alt="Planner cover: embroidered patches on a square of denim" width="600" height="849" loading="lazy"><img src="/img/planner/page-4.jpg" alt="Denim jacket front template on a dotted grid" width="600" height="849" loading="lazy"><img src="/img/planner/page-8.jpg" alt="Four patch layout ideas for jackets" width="600" height="849" loading="lazy"><img src="/img/planner/page-11.jpg" alt="Cheat sheet: care label iron symbols and the best method for each fabric" width="600" height="849" loading="lazy"></div>
 
 ## What's inside
 
