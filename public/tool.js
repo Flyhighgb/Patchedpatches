@@ -42,8 +42,8 @@
 <circle cx="200" cy="48" r="6" fill="${t}"/>` },
   };
   const GARMENT_COLOURS = ['#5b7fb0', '#9db9dc', '#3a3f47', '#b49a6a', '#c94a3c', '#5b7d4a', '#efe6d2'];
-  const PATCH_COLOURS = ['#ff6b4a', '#e8467c', '#ffd23f', '#5cb83c', '#3f78c9', '#1f3a5f', '#7ad0f0', '#fff4d6', '#2b2420', '#8e5cd9'];
-  const LIGHT = ['#ffd23f', '#7ad0f0', '#fff4d6', '#efe6d2', '#9db9dc'];
+  const PATCH_COLOURS = ['#c2522b', '#b8475f', '#e9c46a', '#4f7a5a', '#2f4d8a', '#1b2236', '#7fb3d5', '#f3e9d6', '#2b2420', '#6b4a8c'];
+  const LIGHT = ['#e9c46a', '#7fb3d5', '#f3e9d6', '#ffd23f', '#7ad0f0', '#fff4d6', '#efe6d2', '#9db9dc'];
 
   // Patch shapes, centred on 0,0 and 100 units wide. `h` is their height, used for the size readout.
   const SHAPES = {
@@ -59,11 +59,11 @@
 
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const shade = (hex, f) => '#' + hex.slice(1).match(/../g).map(h => Math.max(0, Math.min(255, Math.round(parseInt(h, 16) * f))).toString(16).padStart(2, '0')).join('');
-  const inkFor = colour => LIGHT.includes(colour) ? '#1f3a5f' : '#ffffff';
+  const inkFor = colour => LIGHT.includes(colour) ? '#1b2236' : '#f6efe2';
 
   const fresh = () => ({ garment: 'jacket-back', colour: '#5b7fb0', patches: [
     { id: 1, shape: 'rocker', colour: '#2b2420', text: 'PATCHED', size: 30, rot: 0, x: 200, y: 112 },
-    { id: 2, shape: 'circle', colour: '#ff6b4a', text: 'MEND IT', size: 16, rot: 0, x: 200, y: 240 },
+    { id: 2, shape: 'circle', colour: '#c2522b', text: 'MEND IT', size: 16, rot: 0, x: 200, y: 240 },
   ] });
   let state = load() || fresh();
   let selected = null;
@@ -223,17 +223,23 @@ ${label}</g>`;
     const markup = new XMLSerializer().serializeToString(svg).replace(/<svg([^>]*)>/, `<svg$1 width="1080" height="1188"><style>${font}</style>`);
     selected = was; render();
     const img = new Image();
-    img.onload = () => {
+    img.onload = async () => {
       const c = document.createElement('canvas'); c.width = 1200; c.height = 1500;
       const x = c.getContext('2d');
-      x.fillStyle = '#e6f7ff'; x.fillRect(0, 0, 1200, 1500);
-      x.fillStyle = '#7cc444'; x.fillRect(0, 1380, 1200, 120);
-      x.drawImage(img, 60, 120, 1080, 1188);
-      x.fillStyle = '#1f3a5f'; x.textAlign = 'center';
-      x.font = '700 54px Nunito, system-ui, sans-serif';
-      x.fillText(`My ${GARMENTS[state.garment].name.toLowerCase()} patch layout`, 600, 84);
-      x.fillStyle = '#fff'; x.font = '700 40px Nunito, system-ui, sans-serif';
-      x.fillText('Planned on patchedpatches.co.uk', 600, 1454);
+      // A cutting mat with a centimetre grid, like the stage on the page.
+      x.fillStyle = '#2e5b4d'; x.fillRect(0, 0, 1200, 1500);
+      for (let i = 0; i <= 1500; i += 30) {
+        x.fillStyle = i % 150 ? 'rgba(255,255,255,.07)' : 'rgba(255,255,255,.16)';
+        x.fillRect(i, 0, 2, 1500); x.fillRect(0, i, 1200, 2);
+      }
+      x.drawImage(img, 60, 150, 1080, 1188);
+      try { await Promise.all(['400 60px Fraunces', '600 34px "Instrument Sans"'].map(f => document.fonts.load(f))); } catch {}
+      x.fillStyle = '#f3eee4'; x.textAlign = 'center';
+      x.font = '400 60px Fraunces, Georgia, serif';
+      x.fillText(`My ${GARMENTS[state.garment].name.toLowerCase()} patch layout`, 600, 104);
+      x.fillStyle = '#161e33'; x.fillRect(0, 1404, 1200, 96);
+      x.fillStyle = '#f3eee4'; x.font = '600 34px "Instrument Sans", system-ui, sans-serif';
+      x.fillText('Planned on patchedpatches.co.uk', 600, 1464);
       c.toBlob(blob => {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob); a.download = 'my-patch-layout.png';

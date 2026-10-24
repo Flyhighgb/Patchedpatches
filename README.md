@@ -40,6 +40,10 @@ Body in Markdown.
 
 Add `draft: true` to keep it unpublished. Read `CONTENT.md` before writing.
 
+## Design
+
+The look is a mending journal: calico paper, indigo denim and red thread, with details from the workroom (sewing-pattern pieces, a woven care label, a tape measure, topstitched buttons). Colours are tokens at the top of `public/style.css`, with a dark mode. Fonts are self-hosted in `public/fonts/` (all SIL Open Font Licence): Fraunces for headings, Instrument Sans for text, JetBrains Mono for labels, and Lilita One for the lettering on embroidered patches.
+
 ## Topics and images
 
-Topics are listed in `TOPICS` at the top of `build.mjs`. Each has a colour (`tint`), an illustration in `public/img/<slug>.svg`, an icon in `public/img/icons/<slug>.svg` and a share image in `public/og/<slug>.png`. To add a topic, add it to `TOPICS`, add its drawing to `scripts/illustrations.mjs` and run `npm run art`, then `npm run og` (needs Playwright) to make the share images.
+Topics are listed in `TOPICS` at the top of `build.mjs`. Each has a colour (`tint`), an illustration in `public/img/<slug>.svg`, an icon in `public/img/icons/<slug>.svg` and a share image in `public/og/<slug>.png`. To add a topic, add it to `TOPICS`, add its drawing to `scripts/illustrations.mjs` and run `npm run art`, then `npm run og` (needs Playwright) to make the share images in the site style.
