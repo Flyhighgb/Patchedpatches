@@ -2,12 +2,12 @@
 title: About Patched Patches
 description: What Patched Patches is and how the guides are put together.
 ---
-Patched Patches is a library of practical, UK-focused guides to patches: ironing them on, sewing them on, gluing them, washing them, taking them off again, and choosing the kit that makes it easy.
+Patched Patches is a library of practical, UK-focused guides to patching and mending clothes: ironing on and sewing on patches, fixing holes, darning, sewing on buttons, visible mending, and choosing the kit that makes it easy. We also make a free [patch layout tool](/patch-layout-tool/) for planning where your patches go.
 
 Every guide follows the same shape:
 
 - **The quick answer first**, in plain English.
-- **Numbered steps** you can follow at the ironing board.
+- **Numbered steps** you can follow at the ironing board or sewing table.
 - **What to avoid**, including the fabrics that can't take heat.
 
 ## How we write our guides

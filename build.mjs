@@ -9,16 +9,19 @@ const OUT = 'dist';
 // Browsers keep style.css for a day (see public/_headers), so its URL changes whenever it does.
 const cssVersion = createHash('sha1').update(readFileSync('public/style.css')).digest('hex').slice(0, 8);
 const fxVersion = createHash('sha1').update(readFileSync('public/fx.js')).digest('hex').slice(0, 8);
+const toolVersion = createHash('sha1').update(readFileSync('public/tool.js')).digest('hex').slice(0, 8);
 
 // Topics shown on the homepage. Each has an illustration in public/img/<slug>.svg
 // and a share image in public/og/<slug>.png (made by `npm run og`).
 const TOPICS = [
   { name: 'Applying patches', slug: 'applying-patches', tint: '#3f78c9', blurb: 'Ironing on, sewing on and gluing patches so they stay put.' },
+  { name: 'Mending and repairs', slug: 'mending-and-repairs', tint: '#8e5cd9', blurb: 'Holes, buttons, darning and visible mending to keep your clothes going.' },
   { name: 'Patch care', slug: 'patch-care', tint: '#5cb83c', blurb: 'Washing, fixing peeling edges and removing patches cleanly.' },
   { name: 'Choosing patches', slug: 'choosing-patches', tint: '#e8467c', blurb: 'Embroidered, woven, PVC and chenille, and which backing to pick.' },
   { name: 'Projects and ideas', slug: 'projects-and-ideas', tint: '#ff6b4a', blurb: 'Jackets, bags, denim and making your own patches.' },
   { name: 'Tools and kit', slug: 'tools-and-kit', tint: '#f2a71b', blurb: 'The best irons, heat presses, fabric glues and needles for patches.' },
 ];
+const TOOL_PATH = '/patch-layout-tool/';
 const topicFor = name => TOPICS.find(t => t.name === name);
 
 function parse(file) {
@@ -146,7 +149,7 @@ ${ads}
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><div class="wrap">
   <a class="logo" href="/"><img src="/favicon.svg" alt="" width="32" height="32"> ${esc(config.name)}</a>
-  <nav aria-label="Main"><a href="/guides/"><span class="hide-sm">All guides</span><span class="show-sm">Guides</span></a><a class="hide-sm" href="/topics/tools-and-kit/">Tools &amp; kit</a><a href="/best-patch-supplies/"><span class="hide-sm">Best supplies</span><span class="show-sm">Supplies</span></a><a class="hide-sm" href="/about/">About</a></nav>
+  <nav aria-label="Main"><a href="/guides/"><span class="hide-sm">All guides</span><span class="show-sm">Guides</span></a><a class="hide-sm" href="/topics/mending-and-repairs/">Mending</a><a href="${TOOL_PATH}"><span class="hide-sm">Layout tool</span><span class="show-sm">Tool</span></a><a class="hide-xs" href="/best-patch-supplies/"><span class="hide-sm">Best supplies</span><span class="show-sm">Supplies</span></a><a class="hide-sm" href="/about/">About</a></nav>
 </div></header>
 <main id="main">
 ${body}
@@ -155,7 +158,7 @@ ${body}
   <div class="footer-grid">
     <div><a class="logo" href="/"><img src="/favicon.svg" alt="" width="32" height="32"> ${esc(config.name)}</a>
       <p>${esc(config.tagline)}</p></div>
-    <div><h2>Topics</h2><ul>${TOPICS.filter(t => usedNames.has(t.name)).map(t => `<li><a href="/topics/${t.slug}/">${esc(t.name)}</a></li>`).join('')}<li><a href="/best-patch-supplies/">Best patch supplies</a></li><li><a href="/patch-planner/">Patch Placement Planner</a></li></ul></div>
+    <div><h2>Topics</h2><ul>${TOPICS.filter(t => usedNames.has(t.name)).map(t => `<li><a href="/topics/${t.slug}/">${esc(t.name)}</a></li>`).join('')}<li><a href="/best-patch-supplies/">Best patch supplies</a></li><li><a href="${TOOL_PATH}">Patch layout tool</a></li><li><a href="/patch-planner/">Patch Placement Planner</a></li></ul></div>
     <div><h2>About us</h2><ul><li><a href="/about/">About</a></li><li><a href="/about/#how-we-write-our-guides">How we write our guides</a></li><li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
   </div>
   <p class="footer-note">Always check the care label on your garment and the instructions that came with your patch, iron or glue. Information here is general guidance.</p>
@@ -283,7 +286,7 @@ ${g.image ? `<figure class="head-photo">${photo(g.image, g.imageAlt, { w: 720, h
 ${g.affiliate ? disclosure : ''}
 ${g.toc.length > 2 ? `<details class="toc toc-inline"><summary>In this guide</summary><ol>${g.toc.map(h => `<li><a href="#${h.id}">${h.text}</a></li>`).join('')}</ol></details>` : ''}
 ${g.html}
-<div class="picks"><div><strong>Need the right kit?</strong><span>See our picks of irons, heat presses, fabric glues and needles for patches.</span></div><a class="button" href="/best-patch-supplies/">See our supply picks</a></div>
+<div class="picks"><div><strong>Need the right kit?</strong><span>See our picks of irons, heat presses, fabric glues and sewing kit.</span></div><a class="button" href="/best-patch-supplies/">See our supply picks</a></div>
 <p class="trust-line">Based on manufacturer instructions and established sewing practice. <a href="/about/#how-we-write-our-guides">How we write our guides</a>.</p>
 </article>
 ${g.toc.length > 2 ? `<aside class="sidebar"><nav class="toc" aria-label="In this guide"><p class="toc-title">In this guide</p><ol>${g.toc.map(h => `<li><a href="#${h.id}">${h.text}</a></li>`).join('')}</ol></nav></aside>` : ''}
@@ -311,7 +314,7 @@ for (const t of used) {
 <div class="wrap section"><h2 class="visually-hidden">Guides</h2><ul class="cards">${list.map(card).join('')}</ul></div>` }));
 }
 
-write('/guides/', layout({ title: 'All guides', description: `Every ${config.name} guide to applying, caring for and choosing patches, grouped by topic.`, path: '/guides/',
+write('/guides/', layout({ title: 'All guides', description: `Every ${config.name} guide to patching, mending and caring for your clothes, grouped by topic.`, path: '/guides/',
   body: `<header class="page-head"><div class="wrap"><h1>All guides</h1><p class="lead">${guides.length} practical guides, grouped by topic.</p></div></header><div class="wrap">` + [...used.map(t => t.name), ...unknown].map(c => {
     const t = topicFor(c);
     return `<section class="section"><h2>${t ? `<a href="/topics/${t.slug}/">${esc(c)}</a>` : esc(c)}</h2><ul class="cards">${guides.filter(g => g.category === c).map(card).join('')}</ul></section>`;
@@ -350,17 +353,60 @@ const heroScene = `<div class="scene" aria-hidden="true">
 <span class="bird"><svg viewBox="0 0 60 44"><path d="M8 26c0-12 10-20 22-20 8 0 14 4 16 10l10 2-9 5c-1 10-9 17-21 17C14 40 8 34 8 26z" fill="#1f3a5f"/><path d="M14 24c6 8 16 8 22 2-8 2-16 0-22-2z" fill="#7ad0f0"/><circle cx="38" cy="15" r="2.6" fill="#fff"/><path d="M28 40l-2 4M34 40l2 4" stroke="#f2a71b" stroke-width="2.5" stroke-linecap="round"/><path d="M8 24L1 18l3 10z" fill="#1f3a5f"/></svg></span>
 <div class="garments">${GARMENTS.map(garment).join('')}</div></div>
 </div>`;
-const SHORT = { 'how-to-iron-on-a-patch': 'Ironing on', 'how-to-sew-on-a-patch-by-hand': 'Sewing on', 'how-to-remove-an-iron-on-patch': 'Removing',
-  'how-to-wash-clothes-with-patches': 'Washing', 'iron-on-vs-sew-on-patches': 'Iron-on vs sew-on' };
-const popular = Object.entries(SHORT).map(([slug, short]) => ({ ...guides.find(g => g.slug === slug), short })).filter(g => g.slug).slice(0, 5);
+const SHORT = { 'how-to-iron-on-a-patch': 'Ironing on', 'how-to-patch-a-hole-in-jeans': 'Holes in jeans', 'how-to-sew-on-a-button': 'Buttons',
+  'how-to-darn-a-hole-in-a-jumper': 'Darning', 'how-to-sew-on-a-patch-by-hand': 'Sewing on', 'how-to-wash-clothes-with-patches': 'Washing' };
+const popular = Object.entries(SHORT).map(([slug, short]) => ({ ...guides.find(g => g.slug === slug), short })).filter(g => g.slug).slice(0, 6);
 
-writeFileSync(join(OUT, 'index.html'), layout({ title: config.name, description: 'Step-by-step UK guides to ironing on, sewing on, washing and removing patches, plus the best glues, irons and heat presses for the job.', path: '/',
+// The free patch layout tool. The drawing and controls are filled in by public/tool.js.
+write(TOOL_PATH, layout({ title: 'Free patch layout tool: plan your patches online', path: TOOL_PATH, image: ogFor('Projects and ideas'),
+  description: 'Plan where your patches go before you iron or sew. Pick a jacket, backpack, cap or jeans, drag patches into place at real sizes, and save a picture. Free, no sign-up.',
+  schema: { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Patch layout tool', url: `${config.url}${TOOL_PATH}`, applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' }, publisher: org },
+  body: `<header class="page-head" style="--tint:#ff6b4a"><div class="wrap"><p class="crumbs"><a href="/">Home</a> › Patch layout tool</p>
+<h1>Free patch layout tool</h1>
+<p class="lead">Try out your patches on a jacket, backpack, cap or jeans before the iron comes out. Drag them about, resize them to real sizes and save a picture of your layout.</p></div></header>
+<section class="wrap layout-tool">
+<div class="stage"><svg viewBox="0 0 400 440" role="img" aria-label="Your garment with its patches. Drag a patch to move it."></svg>
+<p class="stage-note"><span class="count"></span> · Sizes are for an adult medium, so treat them as a guide.</p></div>
+<div class="controls">
+<fieldset><legend>1. Pick a garment</legend><div class="pills garment-picks"></div><div class="swatches garment-colours"></div></fieldset>
+<fieldset><legend>2. Add a patch</legend><div class="shape-picks"></div></fieldset>
+<fieldset><legend>3. Style your patch</legend>
+<p class="edit-empty">Tap a patch to change its colour, words, size or angle. Drag it to move it.</p>
+<div class="edit" hidden>
+<div class="swatches patch-colours"></div>
+<label for="pt-text">Words <small>(up to 14 letters)</small></label><input id="pt-text" type="text" maxlength="14" autocomplete="off" placeholder="e.g. MEND IT">
+<label for="pt-size">Size <output id="pt-size-out" for="pt-size"></output></label><input id="pt-size" type="range" min="2" max="40" step="0.5">
+<label for="pt-rot">Angle <output id="pt-rot-out" for="pt-rot"></output></label><input id="pt-rot" type="range" min="-180" max="180" step="1">
+<div class="pills"><button type="button" data-act="front">Bring to front</button><button type="button" data-act="copy">Duplicate</button><button type="button" data-act="delete" class="danger">Remove</button></div>
+</div></fieldset>
+<div class="tool-actions"><button type="button" class="button" data-act="png">Save picture</button><button type="button" class="button ghost" data-act="link">Copy share link</button><button type="button" class="link-button" data-act="reset">Start again</button></div>
+</div>
+<noscript><p>The layout tool needs JavaScript. Our printable <a href="/patch-planner/">Patch Placement Planner</a> works on paper instead.</p></noscript>
+</section>
+<section class="wrap narrow tool-help post">
+<h2>How to use your layout</h2>
+<ol><li><strong>Measure your real patches</strong> and set each one to its width in centimetres, so the layout matches what you've got.</li>
+<li><strong>Leave a gap</strong> of about 1 cm (⅜ in) between patches and keep them off thick seams, which stop an iron pressing evenly.</li>
+<li><strong>Save a picture</strong> and keep it open on your phone while you pin the patches in place.</li>
+<li><strong>Then fix them on</strong>: see <a href="/guides/how-to-iron-on-a-patch/">how to iron on a patch</a> or <a href="/guides/how-to-sew-on-a-patch-by-hand/">how to sew one on</a>.</li></ol>
+<p>Looking for ideas? Read <a href="/guides/where-to-put-patches-on-a-denim-jacket/">where to put patches on a denim jacket</a> and <a href="/guides/how-to-put-patches-on-a-backpack/">how to put patches on a backpack</a>.</p>
+</section>
+<section class="planner-band"><div class="wrap planner-grid">
+<div class="planner-copy"><p class="eyebrow">Prefer paper?</p><h2>The printable Patch Placement Planner</h2>
+<p>Templates for jackets, bags, caps and jeans, an actual-size patch guide and a care cheat sheet, ready to print and sketch on.</p>
+<a class="button" href="/patch-planner/">See the planner</a></div>
+<a class="planner-fan" href="/patch-planner/" aria-label="See the Patch Placement Planner"><img src="/img/planner/page-4.jpg" alt="" width="600" height="849" loading="lazy"><img src="/img/planner/page-8.jpg" alt="" width="600" height="849" loading="lazy"><img src="/img/planner/page-1.jpg" alt="" width="600" height="849" loading="lazy"></a>
+</div></section>
+<script defer src="/tool.js?v=${toolVersion}"></script>` }));
+
+writeFileSync(join(OUT, 'index.html'), layout({ title: config.name, description: 'Step-by-step UK guides to patching and mending clothes: ironing on and sewing on patches, fixing holes, darning and buttons, plus a free patch layout tool.', path: '/',
   schema: { '@context': 'https://schema.org', '@type': 'WebSite', name: config.name, url: config.url },
   body: `<section class="hero sunny">
 <div class="wrap hero-copy">
-<p class="eyebrow">Patches, in plain English</p>
-<h1>Get your patch on, and <span class="sewn">keep it on!<svg class="stitch-line" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><defs><mask id="sew"><path class="sew-reveal" d="M4 14 C 70 4, 130 22, 190 12 S 280 6, 296 12" stroke="#fff" stroke-width="10" fill="none" pathLength="1"/></mask></defs><path d="M4 14 C 70 4, 130 22, 190 12 S 280 6, 296 12" mask="url(#sew)"/></svg></span></h1>
-<p class="lead">Friendly, step-by-step guides to ironing on, sewing on, washing and removing patches, plus the kit that makes it easy.</p>
+<p class="eyebrow">Patching and mending, in plain English</p>
+<h1>Patch it, mend it,<br> <span class="sewn">keep wearing it!<svg class="stitch-line" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><defs><mask id="sew"><path class="sew-reveal" d="M4 14 C 70 4, 130 22, 190 12 S 280 6, 296 12" stroke="#fff" stroke-width="10" fill="none" pathLength="1"/></mask></defs><path d="M4 14 C 70 4, 130 22, 190 12 S 280 6, 296 12" mask="url(#sew)"/></svg></span></h1>
+<p class="lead">Friendly, step-by-step guides to patching holes, sewing on patches and buttons, darning and visible mending, plus the kit that makes it easy.</p>
 <p class="quick"><span>Popular:</span> ${popular.map(g => `<a href="/guides/${g.slug}/">${esc(g.short)}</a>`).join('')}</p>
 </div>
 ${heroScene}
@@ -395,6 +441,18 @@ ${heroScene}
 </ul>
 <p class="kit-more"><a class="button" href="/best-patch-supplies/">See all our supply picks</a></p>
 </div></section>
+<section class="tool-band"><div class="wrap tool-band-grid">
+<a class="tool-band-art" href="${TOOL_PATH}" aria-label="Open the patch layout tool"><svg viewBox="0 0 400 300" aria-hidden="true">
+<path d="M130 30Q200 46 270 30L318 52 350 230 316 240 300 120V290H100V120L84 240 50 230 82 52Z" fill="#5b7fb0" stroke="#3f6396" stroke-width="4" stroke-linejoin="round"/>
+<path d="M130 30Q200 54 270 30Q256 16 200 20Q144 16 130 30Z" fill="#3f6396"/><path d="M100 104Q200 124 300 104" fill="none" stroke="#e0a84a" stroke-width="2" stroke-dasharray="5 4"/>
+<g transform="translate(200 78)"><path d="M-80-14Q0-56 80-14V16Q0-26-80 16Z" fill="#2b2420"/><text y="-4" text-anchor="middle" font-family="'Lilita One', Impact, sans-serif" font-size="22" fill="#fff" letter-spacing="2">MY JACKET</text></g>
+<g transform="translate(160 172)"><circle r="36" fill="#ff6b4a" stroke="#c94a2c" stroke-width="3"/><circle r="28" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5 4"/><path d="M0-18l5.5 11.5 12.5 1.5-9.5 8.5 2.8 12.5L0 9.5-11.3 16l2.8-12.5-9.5-8.5 12.5-1.5z" fill="#ffd23f"/></g>
+<g transform="translate(246 196) rotate(10)"><path d="M0-34L30-26V-2C30 18 16 28 0 34-16 28-30 18-30-2V-26Z" fill="#ffd23f" stroke="#d9a90f" stroke-width="3"/><text y="6" text-anchor="middle" font-family="'Lilita One', Impact, sans-serif" font-size="15" fill="#1f3a5f">MEND</text></g>
+<g class="cursor" transform="translate(262 214)"><path d="M0 0l0 34 9-8 7 15 7-3-7-15h12z" fill="#fff" stroke="#1f3a5f" stroke-width="2.5" stroke-linejoin="round"/></g></svg></a>
+<div class="planner-copy"><p class="eyebrow">Free online tool</p><h2>Try your patches on before you iron</h2>
+<p>Pick a jacket, backpack, cap or jeans, drag patches into place at real sizes and save a picture of your layout. Free, with no sign-up.</p>
+<a class="button" href="${TOOL_PATH}">Open the layout tool</a></div>
+</div></section>
 <section class="planner-band"><div class="wrap planner-grid">
 <div class="planner-copy"><p class="eyebrow">Printable planner</p><h2>Plan your perfect patch jacket</h2>
 <p>Templates for jackets, bags, caps and jeans, a real-size patch guide and a care cheat sheet. Print it, sketch it, then press with confidence.</p>
@@ -407,7 +465,7 @@ ${featured(guides[0])}
 
 const newest = guides.map(g => lastmod[`/guides/${g.slug}/`]).sort().pop();
 const urls = [['/', newest], ['/guides/', newest], ...used.map(t => [`/topics/${t.slug}/`]),
-  ...guides.map(g => [`/guides/${g.slug}/`, lastmod[`/guides/${g.slug}/`]]), ...pages.map(p => [`/${p.slug}/`])];
+  ...guides.map(g => [`/guides/${g.slug}/`, lastmod[`/guides/${g.slug}/`]]), ...pages.map(p => [`/${p.slug}/`]), [TOOL_PATH]];
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(([u, d]) => `  <url><loc>${config.url}${u}</loc>${d ? `<lastmod>${d}</lastmod>` : ''}</url>`).join('\n')}
