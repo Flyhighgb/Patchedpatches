@@ -4,7 +4,7 @@ Only add links from programs listed here as **active**. The site targets UK read
 
 | Program | Status | Link format / tag |
 |---|---|---|
-| Amazon Associates (UK, affiliate-program.amazon.co.uk) | **pending: not joined yet** | Once joined, set the tracking ID (e.g. `patchedpatch-21`) as `amazonTag` in site.config.json. In guides write `[link text](amazon:search words)`; the build turns it into an amazon.co.uk search link with the tag. Amazon closes accounts with no qualifying sales in the first 180 days, so only join once the site is live and indexed. |
+| Amazon Associates (UK, affiliate-program.amazon.co.uk) | **joined 2026-10-24**, tracking ID `patchedpatches-20` | Set as `amazonTag` in site.config.json. In guides write `[link text](amazon:search words)`; the build turns it into an amazon.co.uk search link with the tag. Amazon closes accounts with no qualifying sales in the first 180 days, so aim for three sales by late April 2027. |
 | Etsy (via Awin) | not joined | Good fit for custom and handmade patches. |
 | Awin (network) | **pending: not joined yet** | Join Awin as a publisher, then put the publisher ID in `awinPublisherId` in site.config.json. Each merchant also needs its own approval. |
 | Abakhan (via Awin, merchant 32143) | apply once on Awin | In guides write `[link text](awin:abakhan|https://www.abakhan.co.uk/...)`. Shows as plain text until `awinPublisherId` is set. |
