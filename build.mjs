@@ -33,7 +33,7 @@ function parse(file) {
     const i = line.indexOf(':');
     if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim().replace(/^"(.*)"$/, '$1');
   }
-  const body = unsplashImages(gumroadLinks(awinLinks(amazonLinks(m[2]))));
+  const body = unsplashImages(contactLinks(gumroadLinks(awinLinks(amazonLinks(m[2])))));
   const minutes = Math.max(1, Math.round(m[2].split(/\s+/).length / 220));
   const html = callouts(stackTables(headingIds(marked.parse(body))));
   return { ...meta, slug: basename(file, '.md'), faq: faqs(body), minutes, affiliate: body.includes('rel="sponsored'), html,
@@ -64,6 +64,12 @@ function awinLinks(md) {
     const url = `https://www.awin1.com/cread.php?awinmid=${encodeURIComponent(mid)}&amp;awinaffid=${encodeURIComponent(config.awinPublisherId)}&amp;ued=${encodeURIComponent(dest.trim())}`;
     return `<a href="${url}" rel="sponsored nofollow noopener" target="_blank">${text}</a>`;
   });
+}
+
+// [email us](contact:email) -> a mailto link to contactEmail in site.config.json, or the plain text until it's set.
+function contactLinks(md) {
+  return md.replace(/\[([^\]]+)\]\(contact:email\)/g, (_, text) =>
+    config.contactEmail ? `[${text}](mailto:${config.contactEmail})` : text);
 }
 
 // [Get the planner](gumroad:planner) -> a buy button for the Gumroad product in site.config.json, or a "coming soon" note until it's listed.
@@ -119,8 +125,11 @@ function layout({ title, description, path, body, schema, image = '/og/default.p
   const full = path === '/' ? `${config.name}: ${config.tagline.replace(/\.$/, '')}` : title.length > 48 ? title : `${title} | ${config.name}`;
   const analytics = config.analytics
     ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${esc(config.analytics)}"}'></script>` : '';
+  // The AdSense tag also runs Google's consent message (set up under Privacy & messaging in AdSense),
+  // which UK law needs before personalised ads. The account meta tag lets AdSense verify the site.
   const ads = config.adsenseClient
-    ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${esc(config.adsenseClient)}" crossorigin="anonymous"></script>` : '';
+    ? `<meta name="google-adsense-account" content="${esc(config.adsenseClient)}">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${esc(config.adsenseClient)}" crossorigin="anonymous"></script>` : '';
   const schemas = [].concat(schema || []);
   const here = href => path.startsWith(href) ? ' aria-current="page"' : '';
   return `<!doctype html>
@@ -169,13 +178,14 @@ ${body}
       <p>${esc(config.tagline)}</p></div>
     <div><h2>Topics</h2><ul>${TOPICS.filter(t => usedNames.has(t.name)).map(t => `<li><a href="/topics/${t.slug}/">${esc(t.name)}</a></li>`).join('')}</ul></div>
     <div><h2>Tools</h2><ul><li><a href="${TOOL_PATH}">Patch layout tool</a></li><li><a href="/patch-planner/">Patch Placement Planner</a></li><li><a href="/best-patch-supplies/">Best patch supplies</a></li></ul></div>
-    <div><h2>About us</h2><ul><li><a href="/about/">About</a></li><li><a href="/about/#how-we-write-our-guides">How we write our guides</a></li><li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
+    <div><h2>About us</h2><ul><li><a href="/about/">About</a></li><li><a href="/about/#how-we-write-our-guides">How we write our guides</a></li><li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy and cookies</a></li><li><a href="/contact/">Contact</a></li>${config.adsenseClient ? '<li><button type="button" class="link-button" data-cookie-settings>Cookie settings</button></li>' : ''}</ul></div>
   </div>
   <p class="footer-note">Always check the care label on your garment and the instructions that came with your patch, iron or glue. Information here is general guidance.</p>
   <p class="footer-note">© ${new Date().getFullYear()} ${esc(config.name)}. Made in the UK.${guides.some(g => g.image) ? ' Photos from <a href="https://unsplash.com/?utm_source=patchedpatches&amp;utm_medium=referral">Unsplash</a>.' : ''}</p>
   <div class="wordmark" aria-hidden="true"></div>
 </div></footer>
 ${analytics}
+${config.adsenseClient ? `<script>document.querySelectorAll('[data-cookie-settings]').forEach(b => b.addEventListener('click', () => { window.googlefc = window.googlefc || {}; googlefc.callbackQueue = googlefc.callbackQueue || []; googlefc.callbackQueue.push(googlefc.showRevocationMessage); }));</script>` : ''}
 </body>
 </html>`;
 }
@@ -527,6 +537,9 @@ writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 ${urls.map(([u, d]) => `  <url><loc>${config.url}${u}</loc>${d ? `<lastmod>${d}</lastmod>` : ''}</url>`).join('\n')}
 </urlset>
 `);
+// ads.txt tells ad buyers which AdSense account may sell space on this site.
+if (config.adsenseClient) writeFileSync(join(OUT, 'ads.txt'), `google.com, ${config.adsenseClient.replace(/^ca-/, '')}, DIRECT, f08c47fec0942fa0\n`);
+if (!config.contactEmail) console.warn('No contactEmail in site.config.json: the contact page has no address yet.');
 writeFileSync(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${config.url}/sitemap.xml\n`);
 writeFileSync(join(OUT, '404.html'), layout({ title: 'Page not found', description: 'Page not found', path: '/404',
   body: `<div class="wrap narrow section"><h1>Page not found</h1><p>That page doesn't exist. Try the <a href="/guides/">list of guides</a>.</p></div>` }));
