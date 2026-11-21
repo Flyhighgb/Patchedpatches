@@ -21,7 +21,8 @@ Every push to `main` redeploys automatically.
 
 - Affiliate links: set `amazonTag` in `site.config.json` to the Amazon.co.uk Associates tracking ID. Until it's set, `amazon:` links render as plain text, so nothing is linked before the account exists. See `AFFILIATES.md`.
 - Analytics: put the Cloudflare Web Analytics token in `analytics`.
-- Ads: `adsenseClient` (e.g. `ca-pub-...`) once AdSense approves the site. Ads need a UK cookie consent banner before they go live.
+- Ads: put the AdSense publisher ID (e.g. `ca-pub-1234567890123456`) in `adsenseClient` when you apply. That adds the AdSense tag and the `google-adsense-account` meta tag to every page, writes `/ads.txt`, and adds a "Cookie settings" link to the footer. Before ads show to UK visitors, turn on the GDPR message in AdSense under Privacy & messaging (Google's own certified consent banner, free).
+- Contact: put the public contact address in `contactEmail`. The contact and privacy pages link to it.
 
 ## Adding a guide
 
