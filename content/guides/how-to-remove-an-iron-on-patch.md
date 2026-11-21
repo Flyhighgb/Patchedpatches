@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: PEEL|IT OFF
 shape: hex
 reviewed: 2026-10-10
+image: /img/guides/how-to-remove-an-iron-on-patch.jpg
+imageAlt: Hands lifting the edge of an embroidered iron-on patch off a denim jacket with tweezers, with a cloth to clean the glue left behind and an iron nearby
 ---
 The glue on an iron-on patch softens when it's heated, so the same heat that put it on will take it off. The patch comes away fairly easily; the leftover glue is the fiddly part. On most cotton and denim you can get it all off with an iron, some patience and a little solvent. Expect a faint outline on fabric that has faded around the patch, especially dark denim, as the fabric underneath will be a little darker.
 
