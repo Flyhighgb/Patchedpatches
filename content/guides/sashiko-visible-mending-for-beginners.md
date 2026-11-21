@@ -6,6 +6,8 @@ date: 2026-10-24
 reviewed: 2026-10-24
 patch: SASHIKO
 shape: oval
+image: /img/guides/sashiko-visible-mending-for-beginners.jpg
+imageAlt: A sashiko patch on blue jeans, stitched with white cross and hemp-leaf patterns, laid out with skeins of thread, scissors and a ruler
 ---
 Visible mending means repairing a hole or worn patch so the repair shows on purpose, usually with a contrasting patch and rows of neat running stitch. **Sashiko** is a Japanese stitching tradition of running stitch in thick thread, originally used to reinforce and repair work clothes, and it's the style most people mean when they talk about visible mending today. You only need one stitch, and an uneven first attempt still looks good.
 
