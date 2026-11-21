@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: POCKET|FIX
 shape: circle
+image: /img/guides/how-to-fix-a-hole-in-a-trouser-pocket.jpg
+imageAlt: Hands stitching up a torn white pocket lining on a pair of navy trousers, with thread, scissors and a pincushion nearby
 ---
 A hole in a trouser pocket is almost always in the pocket bag, the thin lining fabric inside, usually along the bottom seam where coins and keys rub. Turn the pocket inside out and either backstitch the seam closed a little above the hole, or iron or sew a patch over it. If the lining has gone thin all over, it's worth replacing the pocket bag. All three are easy by hand.
 
