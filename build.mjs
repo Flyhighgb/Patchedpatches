@@ -122,7 +122,9 @@ const FONTS = ['fraunces', 'instrument-sans'].map(f => `<link rel="preload" href
 
 function layout({ title, description, path, body, schema, image = '/og/default.png', kind = 'page' }) {
   // Google shows about 60 characters of a title, so long titles drop the site name.
-  const full = path === '/' ? `${config.name}: ${config.tagline.replace(/\.$/, '')}` : title.length > 48 ? title : `${title} | ${config.name}`;
+  const suffix = ` | ${config.name}`;
+  const full = path === '/' ? `${config.name}: UK guides to patching and mending clothes`
+    : title.length + suffix.length <= 60 ? title + suffix : title;
   const analytics = config.analytics
     ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${esc(config.analytics)}"}'></script>` : '';
   // The AdSense tag also runs Google's consent message (set up under Privacy & messaging in AdSense),
@@ -274,7 +276,30 @@ const guides = readdirSync('content/guides').filter(f => f.endsWith('.md'))
 const pages = existsSync('content/pages')
   ? readdirSync('content/pages').filter(f => f.endsWith('.md')).map(f => parse(join('content/pages', f))) : [];
 usedNames = new Set(guides.map(g => g.category));
-const org = { '@type': 'Organization', name: config.name, url: config.url };
+const org = { '@type': 'Organization', name: config.name, url: config.url,
+  logo: { '@type': 'ImageObject', url: `${config.url}/apple-touch-icon.png`, width: 180, height: 180 } };
+// A named author only when site.config.json has one (it must be a real person).
+const author = config.author?.name
+  ? { '@type': 'Person', name: config.author.name, url: `${config.url}/about/#who-writes-the-guides`, ...(config.author.bio ? { description: config.author.bio } : {}) }
+  : { ...org, name: `${config.name} editorial team` };
+const byline = config.author?.name ? `<a href="/about/#who-writes-the-guides">${esc(config.author.name)}</a>` : `The ${esc(config.name)} editorial team`;
+
+// In-article ad slots, only once AdSense is approved and an in-article ad unit id is set.
+// Up to three: before the second section, before a middle section, and before "Common questions".
+// Each slot reserves its height in CSS so the page doesn't jump when the ad loads.
+function adSlots(html) {
+  const unit = config.adsenseClient && config.adSlots?.inArticle;
+  if (!unit) return html;
+  const slot = `<aside class="ad-slot" aria-label="Advertisement"><span class="ad-label">Advertisement</span><ins class="adsbygoogle" style="display:block;text-align:center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="${esc(config.adsenseClient)}" data-ad-slot="${esc(unit)}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></aside>`;
+  const heads = [...html.matchAll(/<h2 id="([^"]+)">/g)].map(m => ({ id: m[1], at: m.index }));
+  const faq = heads.findIndex(h => h.id === 'common-questions');
+  const body = heads.slice(0, faq > 0 ? faq : heads.length);
+  const picks = new Set([1, Math.floor(body.length / 2) + 1].filter(i => i < body.length && i > 0));
+  if (faq > 2) picks.add(faq);
+  const at = [...picks].map(i => heads[i].at).sort((a, b) => b - a);
+  for (const i of at) html = html.slice(0, i) + slot + '\n' + html.slice(i);
+  return html;
+}
 const lastmod = {};
 
 for (const g of guides) {
@@ -291,7 +316,7 @@ for (const g of guides) {
     { '@context': 'https://schema.org', '@type': 'Article', headline: g.title, description: g.description,
       image: share.startsWith('https://') ? share : `${config.url}${share}`, mainEntityOfPage: `${config.url}${path}`,
       datePublished: g.date, dateModified: lastmod[path],
-      author: { ...org, name: `${config.name} editorial team` }, publisher: org },
+      author, publisher: org },
     crumbSchema([['Guides', '/guides/'], ...(topic ? [[topic.name, `/topics/${topic.slug}/`]] : []), [g.title, path]]),
   ];
   if (g.faq.length) schema.push({ '@context': 'https://schema.org', '@type': 'FAQPage',
@@ -304,7 +329,7 @@ for (const g of guides) {
 <p class="crumbs"><a href="/guides/">Guides</a>${topic ? `<span aria-hidden="true">/</span><a href="/topics/${topic.slug}/">${esc(topic.name)}</a>` : g.category ? `<span aria-hidden="true">/</span>${esc(g.category)}` : ''}</p>
 <h1>${esc(g.title)}</h1>
 <p class="lead">${esc(g.description)}</p>
-<dl class="meta"><div><dt>Written by</dt><dd>The ${esc(config.name)} editorial team</dd></div><div><dt>Last reviewed</dt><dd>${esc(longDate(reviewed))}</dd></div><div><dt>Reading time</dt><dd>${g.minutes} minutes</dd></div></dl>
+<dl class="meta"><div><dt>Written by</dt><dd>${byline}</dd></div><div><dt>Last reviewed</dt><dd>${esc(longDate(reviewed))}</dd></div><div><dt>Reading time</dt><dd>${g.minutes} minutes</dd></div></dl>
 </div>
 ${g.image ? `<figure class="head-photo">${photo(g.image, g.imageAlt, { w: 720, h: 540, sizes: '(max-width: 760px) 100vw, 360px', eager: true })}</figure>`
   : `<span class="head-art patch-stage" aria-hidden="true">${CLOTH}${patchBlock(g, 'p-head', 28)}</span>`}
@@ -313,7 +338,7 @@ ${g.image ? `<figure class="head-photo">${photo(g.image, g.imageAlt, { w: 720, h
 <article class="post">
 ${g.affiliate ? disclosure : ''}
 ${g.toc.length > 2 ? `<details class="toc toc-inline"><summary>In this guide</summary><ol>${g.toc.map(h => `<li><a href="#${h.id}">${h.text}</a></li>`).join('')}</ol></details>` : ''}
-${g.html}
+${adSlots(g.html)}
 <div class="picks"><div><strong>Need the right kit?</strong><span>See our picks of irons, heat presses, fabric glues and sewing kit.</span></div><a class="button" href="/best-patch-supplies/">See our supply picks</a></div>
 <p class="trust-line">Based on manufacturer instructions and established sewing practice. <a href="/about/#how-we-write-our-guides">How we write our guides</a>.</p>
 </article>
@@ -325,7 +350,7 @@ ${more.length ? `<section class="band related"><div class="wrap"><div class="sec
 
 for (const p of pages) {
   write(`/${p.slug}/`, layout({ title: p.title, description: p.description, path: `/${p.slug}/`,
-    body: `<header class="page-head"><div class="wrap narrow"><h1>${esc(p.title)}</h1>${['best-patch-supplies', 'patch-planner'].includes(p.slug) ? `<p class="lead">${esc(p.description)}</p>` : ''}</div></header><div class="wrap narrow"><article class="post">${p.affiliate ? disclosure : ''}${p.html}</article></div>` }));
+    body: `<header class="page-head"><div class="wrap narrow"><h1>${esc(p.title)}</h1>${['best-patch-supplies', 'patch-planner'].includes(p.slug) ? `<p class="lead">${esc(p.description)}</p>` : ''}</div></header><div class="wrap narrow"><article class="post">${p.affiliate ? disclosure : ''}${p.html}${p.slug === 'about' && config.author?.name ? `<h2 id="who-writes-the-guides">Who writes the guides</h2><p>${esc(config.author.bio || `The guides are written and reviewed by ${config.author.name}.`)}</p>` : ''}</article></div>` }));
 }
 
 const used = TOPICS.filter(t => guides.some(g => g.category === t.name));
@@ -444,7 +469,8 @@ write(TOOL_PATH, layout({ title: 'Free patch layout tool: plan your patches onli
 <script defer src="/tool.js?v=${toolVersion}"></script>` }));
 
 writeFileSync(join(OUT, 'index.html'), layout({ title: config.name, description: 'Step-by-step UK guides to patching and mending clothes: ironing on and sewing on patches, fixing holes, darning and buttons, plus a free patch layout tool.', path: '/',
-  schema: { '@context': 'https://schema.org', '@type': 'WebSite', name: config.name, url: config.url },
+  schema: [{ '@context': 'https://schema.org', '@type': 'WebSite', name: config.name, url: config.url, inLanguage: 'en-GB', publisher: org },
+    { '@context': 'https://schema.org', ...org, description: config.tagline, ...(config.contactEmail ? { email: config.contactEmail } : {}) }],
   kind: 'home',
   body: `<section class="hero">
 <div class="wrap hero-grid">
@@ -540,6 +566,25 @@ ${urls.map(([u, d]) => `  <url><loc>${config.url}${u}</loc>${d ? `<lastmod>${d}<
 // ads.txt tells ad buyers which AdSense account may sell space on this site.
 if (config.adsenseClient) writeFileSync(join(OUT, 'ads.txt'), `google.com, ${config.adsenseClient.replace(/^ca-/, '')}, DIRECT, f08c47fec0942fa0\n`);
 if (!config.contactEmail) console.warn('No contactEmail in site.config.json: the contact page has no address yet.');
+// llms.txt: a plain list of the guides for AI assistants and answer engines (llmstxt.org).
+writeFileSync(join(OUT, 'llms.txt'), `# ${config.name}
+
+> ${config.tagline} Written for UK readers, based on manufacturer instructions and established sewing practice.
+
+${TOPICS.filter(t => guides.some(g => g.category === t.name)).map(t => `## ${t.name}
+
+${guides.filter(g => g.category === t.name).map(g => `- [${g.title}](${config.url}/guides/${g.slug}/): ${g.description}`).join('\n')}`).join('\n\n')}
+
+## Tools
+
+- [Free patch layout tool](${config.url}${TOOL_PATH}): plan where patches go on a jacket, backpack, cap or jeans.
+- [Best patch supplies](${config.url}/best-patch-supplies/): recommended kit by type.
+
+## About
+
+- [About and how we write our guides](${config.url}/about/)
+- [Contact](${config.url}/contact/)
+`);
 writeFileSync(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${config.url}/sitemap.xml\n`);
 writeFileSync(join(OUT, '404.html'), layout({ title: 'Page not found', description: 'Page not found', path: '/404',
   body: `<div class="wrap narrow section"><h1>Page not found</h1><p>That page doesn't exist. Try the <a href="/guides/">list of guides</a>.</p></div>` }));
