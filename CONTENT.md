@@ -48,21 +48,21 @@ Rules for buying guides:
 - 1 to 3 Amazon links in a how-to guide. In a buying guide, one per type in the table plus one per named product in Popular picks.
 
 ## Topic backlog
+Prefer long-tail, low-competition searches: specific problems ("ripped belt loop", "hole in trouser pocket") where the top results are forums, iFixit or old blog posts. See KEYWORDS.md.
+
 Write these next, roughly in order, and remove each from the list once published. Alternate mending guides with patch guides.
 
 Mending and repairs (category: Mending and repairs; buying guides go in Tools and kit):
 - Buying guide: best sewing machines for beginners (UK)
-- How to fix a broken zip (stuck, split and missing teeth)
 - How to take up trousers by hand (hemming without a machine)
-- How to fix a ripped seam
-- How to remove bobbles from a jumper (and stop them coming back)
 - Buying guide: best fabric shavers and de-bobblers
 - How to darn socks
 - How to fix a hole in a T-shirt
 - How to mend a hole in a coat lining
-- How to fix a snag in a jumper
+- How to fix a snag in a jumper (long tail: "pulled thread")
+- How to fix a hole in the heel of a sock without darning (long tail)
+- How to fix a hole in a down jacket (feathers coming out) (long tail)
 - Buying guide: best darning and mending kits
-- How to replace a drawstring in a hoodie or joggers
 - How to fix a fallen hem with hemming tape (no sewing)
 - How to repair a tear in a waterproof jacket
 - Basic hand stitches every mender needs

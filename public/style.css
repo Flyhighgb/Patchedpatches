@@ -602,3 +602,8 @@ a:hover .planner-fan img:nth-child(3), .planner-fan:hover img:nth-child(3) { tra
   .site-header, .site-footer, .sidebar, .picks, .related, .toc-inline { display: none !important; }
   body { background: #fff; color: #000; }
 }
+
+/* In-article ads: reserve the space so the text doesn't jump when an ad loads. */
+.ad-slot { margin: 2.4em 0; padding: 14px 0 18px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); min-height: 300px; }
+.ad-label { display: block; margin-bottom: 10px; font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+@media (max-width: 600px) { .ad-slot { min-height: 340px; } }

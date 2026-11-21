@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: 30°|WASH
 shape: square
 reviewed: 2026-10-10
+image: photo-1626806819282-2c1dc01a5e0c
+imageAlt: A washing machine and tumble dryer side by side
 ---
 Patches don't need special treatment, but heat and friction wear them out. Hot washes and tumble dryers soften iron-on glue, and rubbing against other clothes frays embroidery. Wash cool, inside out and gently, dry flat or on a line, and most patches will outlast the garment.
 

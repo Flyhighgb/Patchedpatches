@@ -6,6 +6,8 @@ date: 2026-10-24
 reviewed: 2026-10-24
 patch: BUTTON|UP
 shape: circle
+image: photo-1708442233785-625d195a9edb
+imageAlt: Two green and white buttons on a checked cloth
 ---
 To sew on a button, knot a doubled thread, stitch through the button's holes and the fabric four to six times, leaving a little space under the button, then wrap the thread round those stitches to make a short stem (a shank) and tie off on the inside. It takes about 10 minutes. Buttons that come off again usually weren't given a shank, so the fabric and thread were squeezed every time the button went through the hole.
 

@@ -4,6 +4,13 @@
   "tagline": "Practical UK guides to patching, mending and repairing your clothes.",
   "analytics": "",
   "adsenseClient": "",
+  "adSlots": {
+    "inArticle": ""
+  },
+  "author": {
+    "name": "",
+    "bio": ""
+  },
   "contactEmail": "",
   "amazonTag": "patchedpatches-20",
   "awinPublisherId": "",

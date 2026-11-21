@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: CAP|IT
 shape: oval
 reviewed: 2026-10-10
+image: photo-1794941437422-7bcdd8bf802a
+imageAlt: A beige corduroy baseball cap with a leather patch on the front
 ---
 You can iron, sew or glue a patch onto a hat, but the curve is what makes it tricky. A flat iron can't press evenly on a rounded front, so the patch lifts at the edges. The fix is to put something firm inside the hat to press against, use a small iron or press from both sides, and add a few stitches if the hat gets heavy wear. On beanies and synthetic caps, sew or glue instead of ironing.
 

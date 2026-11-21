@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: GLUE|IT
 shape: circle
 reviewed: 2026-10-10
+image: photo-1646183524128-52ec1d41905c
+imageAlt: A tube of glue on a table
 ---
 Fabric glue is the answer when you can't iron and don't want to sew: on nylon and polyester jackets, caps, shoes, bags and anything heat-sensitive. A good permanent textile glue stays flexible and survives washing. The catch is time: most need hours to set and a day or more to cure fully before the first wash.
 

@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: IRON|VS SEW
 shape: oval
 reviewed: 2026-10-10
+image: photo-1507525586584-6a9c816efbed
+imageAlt: A pile of colourful embroidered patches in different designs
 ---
 The quick answer: **iron-on is quicker, sew-on lasts longer.** Iron-on patches are great for cotton and denim that you don't wash every week. Sewing is better for anything that's washed often, gets heavy wear, or is made from fabric that can't take an iron. Many people do both: iron it on to hold it in place, then add a few stitches.
 

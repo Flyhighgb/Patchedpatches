@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: DENIM|LAYOUT
 shape: square
 reviewed: 2026-10-10
+image: photo-1699385866049-1325221543a2
+imageAlt: The back of a denim jacket covered in patches
 ---
 The classic spots for patches on a denim jacket are the left chest, the upper sleeves, the back panel between the shoulder blades, and the collar. Start with one bigger "anchor" patch, usually on the back or chest, and build smaller ones around it. What usually goes wrong is starting in the middle with small patches, then finding there's no room left for a big one, or putting patches across seams and buttonholes where they pucker and won't lie flat.
 

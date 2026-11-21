@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: SEW|IT ON
 shape: shield
 reviewed: 2026-10-10
+image: photo-1568288796918-03e7d93306bd
+imageAlt: Hands sewing white fabric with a needle and thread
 ---
 Sewing is the most secure way to attach a patch. It works on almost any fabric, including the nylon, polyester, leather and waterproofs that can't take an iron, and a sewn patch survives washing far better than a glued one. You don't need a sewing machine or any experience. One stitch, done neatly, is all it takes.
 
