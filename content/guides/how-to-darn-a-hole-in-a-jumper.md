@@ -6,6 +6,8 @@ date: 2026-10-24
 reviewed: 2026-10-24
 patch: DARN|IT
 shape: hex
+image: /img/guides/how-to-darn-a-hole-in-a-jumper.jpg
+imageAlt: Hands darning a hole in a green knitted jumper with mustard wool, weaving a grid of yarn across the hole
 ---
 To darn a hole in a jumper, you weave new yarn across the hole: first a set of parallel stitches running one way, then a second set woven over and under them at right angles, anchored in the sound knitting around the edge. It takes 15 to 30 minutes for a small hole and lasts for years. Most darns go wrong because they're pulled too tight, which puckers the jumper, or because they stop at the edge of the hole instead of reaching the healthy fabric around it.
 

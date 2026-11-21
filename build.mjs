@@ -196,6 +196,8 @@ ${config.adsenseClient ? `<script>document.querySelectorAll('[data-cookie-settin
 // `image:` in a guide's front matter is the photo id, e.g. photo-1511275539165-cc46b1ee89bf.
 const photoUrl = (id, w, h) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ''}&q=70`;
 function photo(id, alt, { w, h, sizes, eager = false, cls = '' }) {
+  // A local image (e.g. /img/guides/x.jpg) is served as it is; anything else is an Unsplash id.
+  if (id.startsWith('/')) return `<img class="${cls}" src="${esc(id)}" alt="${esc(alt || '')}" width="${w}" height="${h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
   const ratio = h / w;
   const srcset = [w / 2, w, w * 1.5].map(x => `${photoUrl(id, Math.round(x), Math.round(x * ratio))} ${Math.round(x)}w`).join(', ');
   return `<img class="${cls}" src="${esc(photoUrl(id, w, h))}" srcset="${esc(srcset)}" sizes="${sizes}" alt="${esc(alt || '')}" width="${w}" height="${h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
@@ -308,7 +310,7 @@ for (const g of guides) {
   const related = guides.filter(o => o.slug !== g.slug && o.category === g.category).slice(0, 3);
   const more = related.length ? related : guides.filter(o => o.slug !== g.slug).slice(0, 3);
   // Shared links show the guide's photo, cropped to the 1200x630 share size.
-  const share = g.image ? photoUrl(g.image, 1200, 630) : ogFor(g.category);
+  const share = g.image ? (g.image.startsWith('/') ? g.image : photoUrl(g.image, 1200, 630)) : ogFor(g.category);
   const updated = g.updated || g.date;
   const reviewed = g.reviewed || updated;
   lastmod[path] = [updated, reviewed].sort().pop();

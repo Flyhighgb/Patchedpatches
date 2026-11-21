@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: SCHOOL|KNEES
 shape: square
+image: /img/guides/how-to-patch-knees-on-school-trousers.jpg
+imageAlt: Navy school trousers laid flat with a dark iron-on patch being fitted over a frayed hole in the leg, next to a mini iron, scissors and a tape measure
 ---
 Holes in the knees of school trousers are best fixed from the inside, so the repair doesn't show. Iron a patch behind the hole, glue side to the trousers, then stitch around the hole from the outside so it can't peel. If the hole is big or the school doesn't mind, a neat matching patch on the outside is the toughest fix. Both take 20 minutes and should see out the term.
 

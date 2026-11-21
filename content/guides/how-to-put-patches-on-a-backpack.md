@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: PACK|IT
 shape: hex
 reviewed: 2026-10-10
+image: /img/guides/how-to-put-patches-on-a-backpack.jpg
+imageAlt: Hands pinning embroidered patches onto the front pocket of an olive green canvas backpack, with a mini iron, scissors and thread nearby
 ---
 The most reliable way to put a patch on a backpack is to sew it on by hand through the outer layer only. Most backpacks are nylon or polyester, which can melt under an iron, so iron-on patches often don't stick properly and can damage the bag. Fabric glue and hook-and-loop panels are good alternatives. What usually goes wrong is ironing a synthetic bag, or sewing straight through the front pocket and the lining so the bag won't open.
 
