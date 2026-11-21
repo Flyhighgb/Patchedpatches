@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: NO|IRON
 shape: hex
 reviewed: 2026-10-10
+image: photo-1785829414436-2f5ce9b1f658
+imageAlt: A man pressing a black T-shirt with a heat press
 ---
 If you don't have an iron, a **pair of hair straighteners** is the most reliable substitute for small patches: they get hot, press from both sides and are easy to hold still. A **flat-bottomed pan of just-boiled water** can work at a push, but it struggles to stay hot enough. If you want a patch to stay on for good without any heat at all, **fabric glue** or a few stitches will do a better job than any improvised heat source.
 

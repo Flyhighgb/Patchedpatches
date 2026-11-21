@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: CORD|BACK
 shape: oval
+image: photo-1556821840-3a63f95609a7
+imageAlt: A man wearing a grey pullover hoodie
 ---
 To put a drawstring back in a hoodie or joggers, fix a safety pin to one end of the cord, push the pin into one eyelet and work it through the channel by bunching the fabric up over the pin and smoothing it out behind, until it comes out of the other eyelet. No safety pin? A drinking straw, a hair grip or a bodkin all work too. It takes about five minutes, and a few stitches at the centre back stop it pulling out again.
 

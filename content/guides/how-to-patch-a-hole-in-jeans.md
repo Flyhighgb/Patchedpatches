@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: MEND|IT
 shape: square
 reviewed: 2026-10-10
+image: photo-1788018970342-0af0b669a051
+imageAlt: Blue jeans mended with several patches, hanging in a garden
 ---
 The quickest way to fix a hole in jeans is an iron-on denim patch placed on the **inside**, with a few rows of stitching over the hole to hold the frayed edges down. If you want the repair to be seen, put a patch on the **outside** and sew round its edge. Most jeans repairs fail for the same two reasons: the patch is too small for the worn area around the hole, or iron-on glue alone is asked to hold a spot that bends and rubs all day.
 

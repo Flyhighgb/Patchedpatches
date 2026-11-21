@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: DE|BOBBLE
 shape: hex
+image: photo-1773747203295-dc002c421c33
+imageAlt: A rust-coloured knitted jumper with loose yarn
 ---
 Bobbles, or pilling, are little balls of short fibres that work loose and tangle on the surface of knitwear where it rubs: under the arms, at the cuffs and where a bag strap sits. You can remove them with an electric fabric shaver, a de-pilling comb or a disposable razor, working gently on a flat surface. To slow them coming back, wash knitwear inside out on a wool or hand-wash cycle and dry it flat.
 

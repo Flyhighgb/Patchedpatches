@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: STICK|IT BACK
 shape: square
 reviewed: 2026-10-10
+image: photo-1770733530182-cf94277c3cf7
+imageAlt: Two vintage patches on a brown leather jacket
 ---
 Most peeling patches can be saved. If it's an iron-on patch and only the edges are lifting, re-press it with a dry iron and a pressing cloth, then press again from the inside. If the glue has worn out, add a fresh layer of iron-on adhesive or textile glue. If it keeps lifting, stitch around the edge, which is the only fix that's close to permanent.
 

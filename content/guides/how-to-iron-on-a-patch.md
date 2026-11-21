@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: IRON|ON
 shape: circle
 reviewed: 2026-10-10
+image: photo-1761682719755-d745218bbdab
+imageAlt: Embroidered patches sorted in a white organiser box
 ---
 An iron-on patch has a layer of heat-activated glue on the back. Heat melts the glue, pressure pushes it into the fabric, and as it cools it sets. Almost every patch that falls off was either not hot enough, not pressed long enough, or put on a fabric that can't take the heat. Get those three right and the patch should survive years of wear.
 

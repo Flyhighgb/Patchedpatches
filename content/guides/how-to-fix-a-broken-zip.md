@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: ZIP|IT
 shape: shield
+image: photo-1727517016634-6fdfc18525c1
+imageAlt: Close-up of a zip on a black leather jacket
 ---
 Most broken zips aren't broken at all. A zip that's **stuck** usually has fabric or dirt caught in it and needs easing free with a little lubricant. A zip that **splits open** behind the slider almost always has a slider that has worn loose, and a gentle squeeze with pliers closes it up again. Only when teeth are missing near the middle, or the tape is torn, does the whole zip need replacing.
 

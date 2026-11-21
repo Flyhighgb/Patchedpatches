@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: STRETCH|FIX
 shape: shield
+image: photo-1789111161057-90c5ce12dc21
+imageAlt: A person wearing black leggings and white trainers
 ---
 To fix a hole in leggings, turn them inside out, pinch the hole closed and sew it with small zigzag-style stitches using polyester thread and a ballpoint needle, leaving a little slack so the repair stretches with the fabric. Split seams in the crotch or inner thigh are fixed the same way along the seam line. Avoid iron-on patches and tight straight stitches: stretch fabric snaps them.
 

@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: BELT|LOOP
 shape: hex
+image: photo-1585856331426-d7a22437d4bb
+imageAlt: Blue denim jeans worn with a black leather belt
 ---
 A belt loop usually rips off at the top, where it's folded under and bar-tacked to the waistband. To fix it, fold the raw end under, hold it in place with a clip, and sew it back down with strong thread and a dense row of back-and-forth stitches (a hand bar tack) across the loop. If the loop has torn a hole in the waistband as well, put a small patch behind it first.
 

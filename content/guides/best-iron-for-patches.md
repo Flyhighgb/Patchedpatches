@@ -6,6 +6,8 @@ date: 2026-10-10
 patch: HEAT|PRESS
 shape: shield
 reviewed: 2026-10-10
+image: photo-1714321960831-c8753b534400
+imageAlt: A person ironing a white shirt with a black iron
 ---
 For a few patches, the household iron you already own is fine: the cotton setting, steam off and firm pressure do the job. A dedicated tool starts to pay off when you're applying a lot of patches, working on awkward spots like caps, sleeves and shoes, or selling patched items and need consistent results.
 

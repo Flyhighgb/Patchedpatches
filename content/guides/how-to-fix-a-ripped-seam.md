@@ -6,6 +6,8 @@ date: 2026-11-21
 reviewed: 2026-11-21
 patch: SEAM|FIX
 shape: circle
+image: photo-1772291320136-7bfb40006088
+imageAlt: Hands carefully hand-sewing a piece of fabric
 ---
 A ripped seam is one of the easiest mends there is, because the fabric itself isn't damaged: the stitching has simply come undone. Turn the garment inside out and backstitch along the original seam line, or, if you can only reach it from the outside, close it with a ladder stitch, which hides inside the fold. Both take 10 to 20 minutes and last as long as the rest of the garment.
 
